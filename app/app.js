@@ -15,6 +15,8 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import history from 'utils/history';
 import omit from 'lodash/omit';
+import { Security } from '@okta/okta-react';
+import config from './app.config';
 
 // Import root app
 import App from 'containers/App';
@@ -63,7 +65,9 @@ const ConnectedApp = ({ messages }) => (
     <LanguageProvider messages={messages}>
       <ConnectedRouter history={history}>
         <HelmetProvider>
+          <Security {...config}>
           <App />
+          </Security>
         </HelmetProvider>
       </ConnectedRouter>
     </LanguageProvider>

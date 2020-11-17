@@ -26,6 +26,7 @@ import messages from './messages';
 import Messages from '../Messages';
 import Notifications from '../Notifications';
 import Modal from './Modal';
+import { useOktaAuth } from '@okta/okta-react';
 
 const stateSelector = createStructuredSelector({
   user: makeSelectUser(),
@@ -33,11 +34,15 @@ const stateSelector = createStructuredSelector({
 });
 
 function HeaderAction({ intl }) {
+  const { authService } = useOktaAuth();
   const { messagesData, user } = useSelector(stateSelector);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: 479 });
 
-  const onLogout = () => dispatch(logoutAction());
+  const onLogout = () => {
+    dispatch(logoutAction());
+    authService.logout();
+  }
   const onGetMessages = () => dispatch(getMessagesAction());
   const onGetNotifications = () => dispatch(getNotificationsAction());
   const onToggleConfirmModal = () => dispatch(toggleConfirmModalAction());

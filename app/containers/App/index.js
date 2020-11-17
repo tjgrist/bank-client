@@ -38,6 +38,7 @@ import { createStructuredSelector } from 'reselect';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import saga from './saga';
+import { LoginCallback, SecureRoute } from '@okta/okta-react';
 
 const stateSelector = createStructuredSelector({
   locale: makeSelectLocale(),
@@ -88,23 +89,24 @@ function App() {
 
           <Layout>
             <Switch>
-              <PrivateRoute
+              <SecureRoute
                 exact
                 path={routes.dashboard.path}
                 component={DashboardPage}
               />
-              <PrivateRoute
+              <SecureRoute
                 path={routes.payment.path}
                 component={PaymentPage}
               />
-              <PrivateRoute
+              <SecureRoute
                 path={routes.history.path}
                 component={HistoryPage}
               />
-              <PrivateRoute
+              <SecureRoute
                 path={routes.settings.path}
                 component={SettingsPage}
               />
+              <Route path="/implicit/callback" exact><LoginCallback/></Route>
 
               <Redirect to={routes.notFound.path} />
             </Switch>

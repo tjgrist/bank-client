@@ -62,7 +62,7 @@ const appReducer = produce((draft, action) => {
       draft.layout = JSON.parse(JSON.stringify(action.layout));
       break;
     case SET_USER_DATA_SUCCESS:
-      draft.user = action.userData;
+      draft.user = Object.assign(draft.user, action.userData);
       break;
     case TOGGLE_CONFIRM_MODAL:
       draft.isOpenedModal = !draft.isOpenedModal;

@@ -959,6 +959,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.11.2":
+  version "7.12.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.3.3":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.10.4.tgz#3251996c4200ebc71d1a8fc405fba940f36ba278"
@@ -1541,6 +1548,34 @@
   dependencies:
     mkdirp "^1.0.4"
 
+"@okta/configuration-validation@^0.4.1":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@okta/configuration-validation/-/configuration-validation-0.4.3.tgz#5756695979c54f9058dd36fb5a87c1c8f463df7e"
+  integrity sha512-dn/1EMGhwajQwV/jNIrj6zvYDdDpFIQnrdqRAww/SvzIz9cuPbw1vYBRpBYX2RQpPhJJuy6iZf0XB6yWVDUavw==
+  dependencies:
+    lodash "^4.17.15"
+
+"@okta/okta-auth-js@^3.2.5":
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/@okta/okta-auth-js/-/okta-auth-js-3.2.6.tgz#9eb457ee46576ade2cab9c2524096f0c91f17edf"
+  integrity sha512-4N3XkaHUs2QbUR3ymg+PtoPAGluU3IkBK1kIfoYWeONXTyz0v/PpAKgHDe3RJkvRkDQzvAJDdT6VL29wIYE1ww==
+  dependencies:
+    Base64 "0.3.0"
+    cross-fetch "^3.0.0"
+    js-cookie "2.2.0"
+    node-cache "^4.2.0"
+    tiny-emitter "1.1.0"
+    xhr2 "0.1.3"
+
+"@okta/okta-react@3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@okta/okta-react/-/okta-react-3.0.9.tgz#343a07a1414b85b39acb83b5813fc6cdfebabd48"
+  integrity sha512-ZAmsYFVmqYkZjmbFdWSNqNrM5TN3LHZUV+bTS49ulR8ak6Cw2EbTwCIYjVqjgh0G9HLdYIOhLB8xgp8CBoFQ/w==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    "@okta/configuration-validation" "^0.4.1"
+    "@okta/okta-auth-js" "^3.2.5"
+
 "@redux-saga/core@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@redux-saga/core/-/core-1.1.3.tgz#3085097b57a4ea8db5528d58673f20ce0950f6a4"
@@ -2097,6 +2132,11 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+
+Base64@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/Base64/-/Base64-0.3.0.tgz#6da261a4e80d4fa0f5c684254e5bccd16bbdce9f"
+  integrity sha1-baJhpOgNT6D1xoQlTlvM0Wu9zp8=
 
 abab@^2.0.3:
   version "2.0.3"
@@ -3500,15 +3540,15 @@ clone-response@1.0.2:
   dependencies:
     mimic-response "^1.0.0"
 
+clone@2.x, clone@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+  integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
+
 clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
-
-clone@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
-  integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
 
 co@^4.6.0:
   version "4.6.0"
@@ -3859,6 +3899,13 @@ cross-env@7.0.2:
   integrity sha512-KZP/bMEOJEDCkDQAyRhu3RL2ZO/SUVrxQVI0G3YEQ+OLbRA3c6zgixe8Mq8a/z7+HKlNEjo8oiLUs8iRijY2Rw==
   dependencies:
     cross-spawn "^7.0.1"
+
+cross-fetch@^3.0.0:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.6.tgz#3a4040bc8941e653e0e9cf17f29ebcd177d3365c"
+  integrity sha512-KBPUbqgFjzWlVcURG+Svp9TlhA5uliYtiNx/0r8nv0pdypeQCRJ9IaSIc3q/x3q8t3F75cHuwxVql1HFGHCNJQ==
+  dependencies:
+    node-fetch "2.6.1"
 
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
@@ -7660,6 +7707,11 @@ jpeg-js@^0.3.4:
   resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.3.7.tgz#471a89d06011640592d314158608690172b1028d"
   integrity sha512-9IXdWudL61npZjvLuVe/ktHiA41iE8qFyLB+4VDTblEsWBzeg8WQTlktdUK4CdncUqtUgUg0bbOmTE2bKBKaBQ==
 
+js-cookie@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.0.tgz#1b2c279a6eece380a12168b92485265b35b1effb"
+  integrity sha1-Gywnmm7s44ChIWi5JIUmWzWx7/s=
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -8757,6 +8809,19 @@ no-case@^3.0.3:
   dependencies:
     lower-case "^2.0.1"
     tslib "^1.10.0"
+
+node-cache@^4.2.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/node-cache/-/node-cache-4.2.1.tgz#efd8474dee4edec4138cdded580f5516500f7334"
+  integrity sha512-BOb67bWg2dTyax5kdef5WfU3X8xu4wPg+zHzkvls0Q/QpYycIFRLEEIdAx9Wma43DxG6Qzn4illdZoYseKWa4A==
+  dependencies:
+    clone "2.x"
+    lodash "^4.17.15"
+
+node-fetch@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-int64@^0.4.0:
   version "0.4.0"
@@ -12397,6 +12462,11 @@ timm@^1.6.1:
   resolved "https://registry.yarnpkg.com/timm/-/timm-1.6.2.tgz#dfd8c6719f7ba1fcfc6295a32670a1c6d166c0bd"
   integrity sha512-IH3DYDL1wMUwmIlVmMrmesw5lZD6N+ZOAFWEyLrtpoL9Bcrs9u7M/vyOnHzDD2SMs4irLkVjqxZbHrXStS/Nmw==
 
+tiny-emitter@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-1.1.0.tgz#ab405a21ffed814a76c19739648093d70654fecb"
+  integrity sha1-q0BaIf/tgUp2wZc5ZICT1wZU/ss=
+
 tiny-invariant@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
@@ -13351,6 +13421,11 @@ ws@^7.2.3:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
   integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
+
+xhr2@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.3.tgz#cbfc4759a69b4a888e78cf4f20b051038757bd11"
+  integrity sha1-y/xHWaabSoiOeM9PILBRA4dXvRE=
 
 xhr@^2.0.1:
   version "2.5.0"
