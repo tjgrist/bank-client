@@ -1556,33 +1556,28 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@okta/configuration-validation@^0.4.1":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@okta/configuration-validation/-/configuration-validation-0.4.3.tgz#5756695979c54f9058dd36fb5a87c1c8f463df7e"
-  integrity sha512-dn/1EMGhwajQwV/jNIrj6zvYDdDpFIQnrdqRAww/SvzIz9cuPbw1vYBRpBYX2RQpPhJJuy6iZf0XB6yWVDUavw==
-  dependencies:
-    lodash "^4.17.15"
-
-"@okta/okta-auth-js@^3.2.5":
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/@okta/okta-auth-js/-/okta-auth-js-3.2.6.tgz#9eb457ee46576ade2cab9c2524096f0c91f17edf"
-  integrity sha512-4N3XkaHUs2QbUR3ymg+PtoPAGluU3IkBK1kIfoYWeONXTyz0v/PpAKgHDe3RJkvRkDQzvAJDdT6VL29wIYE1ww==
+"@okta/okta-auth-js@4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@okta/okta-auth-js/-/okta-auth-js-4.2.0.tgz#19774685a4468fc2daa6d321ab577fc341d918c5"
+  integrity sha512-gxVywXEZ+sMXSgEfBZUvhdKHzZ3KdcYROIV7bLClBCI0axa5BUk6frIbKcj4TXf7J+JNS98GB9xgI9+wWyvn3Q==
   dependencies:
     Base64 "0.3.0"
+    core-js "^3.6.5"
     cross-fetch "^3.0.0"
     js-cookie "2.2.0"
     node-cache "^4.2.0"
+    p-cancelable "^2.0.0"
+    text-encoding "^0.7.0"
     tiny-emitter "1.1.0"
+    webcrypto-shim "^0.1.5"
     xhr2 "0.1.3"
 
-"@okta/okta-react@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/@okta/okta-react/-/okta-react-3.0.9.tgz#343a07a1414b85b39acb83b5813fc6cdfebabd48"
-  integrity sha512-ZAmsYFVmqYkZjmbFdWSNqNrM5TN3LHZUV+bTS49ulR8ak6Cw2EbTwCIYjVqjgh0G9HLdYIOhLB8xgp8CBoFQ/w==
+"@okta/okta-react@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@okta/okta-react/-/okta-react-4.0.0.tgz#ef2e4db650a82f883f747b79aa6a9667e4c9a755"
+  integrity sha512-MDl+r97ReS3BQ6ntT1WkW4kcOp0TagoIITs7s4zCXvQOPxsJ97aKqIhcftAr7E6B0XTKvVsi+WzNgIkdehKgKw==
   dependencies:
     "@babel/runtime" "^7.11.2"
-    "@okta/configuration-validation" "^0.4.1"
-    "@okta/okta-auth-js" "^3.2.5"
 
 "@okta/okta-signin-widget@5.0.2":
   version "5.0.2"
@@ -3857,6 +3852,11 @@ core-js@^3.4.2, core-js@^3.5.0:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
   integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
+
+core-js@^3.6.5:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.7.0.tgz#b0a761a02488577afbf97179e4681bf49568520f"
+  integrity sha512-NwS7fI5M5B85EwpWuIwJN4i/fbisQUwLwiSNUWeXlkAZ0sbBjLEvLvFLf1uzAUV66PcEPt4xCGCmOZSxVf3xzA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -9264,6 +9264,11 @@ p-cancelable@^0.4.0:
   resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-0.4.1.tgz#35f363d67d52081c8d9585e37bcceb7e0bbcb2a0"
   integrity sha512-HNa1A8LvB1kie7cERyy21VNeHb2CWJJYqyyC2o3klWFfMGlFmWv2Z7sFgZH8ZiaYL95ydToKTFVXgMV/Os0bBQ==
 
+p-cancelable@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-2.0.0.tgz#4a3740f5bdaf5ed5d7c3e34882c6fb5d6b266a6e"
+  integrity sha512-wvPXDmbMmu2ksjkB4Z3nZWTSkJEb9lqVdMaCKpZUGJG9TMiNp9XcbG3fn9fPKjem04fJMJnXoyFPk2FmgiaiNg==
+
 p-each-series@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-each-series/-/p-each-series-1.0.0.tgz#930f3d12dd1f50e7434457a22cd6f04ac6ad7f71"
@@ -12455,6 +12460,11 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
+text-encoding@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/text-encoding/-/text-encoding-0.7.0.tgz#f895e836e45990624086601798ea98e8f36ee643"
+  integrity sha512-oJQ3f1hrOnbRLOcwKz0Liq2IcrvDeZRHXhd9RgLrsT+DjWY/nty1Hi7v3dtkaEYbPYe0mUoOfzRrMwfXXwgPUA==
+
 text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
@@ -13229,6 +13239,11 @@ wcwidth@^1.0.1:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+webcrypto-shim@^0.1.5:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/webcrypto-shim/-/webcrypto-shim-0.1.6.tgz#b4554d95c0a63637226c9732440dc674bf96f5cb"
+  integrity sha512-0o612s3S5z3IkDSRghIwd3Ul4X8NRmmZDpt6PWGI9gSM+nygVvrfzGjhIh4vwzlOJxYxS0fcFD1wh3yznuVzFg==
 
 webidl-conversions@^5.0.0:
   version "5.0.0"

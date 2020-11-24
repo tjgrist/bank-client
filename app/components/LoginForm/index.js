@@ -17,7 +17,7 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 import config from '../../app.config';
 
 const Login = () => {
-  const { authService } = useOktaAuth();
+  const { oktaAuth } = useOktaAuth();
 
   useEffect(() => {
     const { issuer, clientId, redirectUri, scopes } = config;
@@ -49,19 +49,19 @@ const Login = () => {
       { el: '#sign-in-widget' },
       ({ tokens }) => {
         // Add tokens to storage
-        const tokenManager = authService.getTokenManager();
+        const tokenManager = oktaAuth.tokenManager;
         tokenManager.add('idToken', tokens.idToken);
         tokenManager.add('accessToken', tokens.accessToken);
 
         // Return to the original URL (if auth was initiated from a secure route), falls back to the origin
-        const fromUri = authService.getFromUri();
+        const fromUri = oktaAuth.getOriginalUri();
         window.location.assign(fromUri);
       },
       (err) => {
         throw err;
       },
     );
-  }, [authService]);
+  }, [oktaAuth]);
 
   return (
     <div>

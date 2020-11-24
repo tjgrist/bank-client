@@ -51,11 +51,11 @@ export default function DashboardPage() {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
-  const { authState, authService } = useOktaAuth();
+  const { authState, oktaAuth } = useOktaAuth();
 
   useEffect(() => {
     if (authState.isAuthenticated && !authState.isPending) {
-      authService.getUser().then(userData => {
+      oktaAuth.getUser().then(userData => {
         dispatch(setUserDataSuccessAction(userData))
       });
     }

@@ -34,14 +34,14 @@ const stateSelector = createStructuredSelector({
 });
 
 function HeaderAction({ intl }) {
-  const { authService } = useOktaAuth();
+  const { oktaAuth } = useOktaAuth();
   const { messagesData, user } = useSelector(stateSelector);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: 479 });
 
   const onLogout = () => {
     dispatch(logoutAction());
-    authService.logout('/');
+    oktaAuth.signOut();
   }
   const onGetMessages = () => dispatch(getMessagesAction());
   const onGetNotifications = () => dispatch(getNotificationsAction());
