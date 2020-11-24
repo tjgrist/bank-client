@@ -1,4 +1,4 @@
-const oktapreview = `https://cloudnalu.oktapreview.com`;
+const oktapreview = `https://dev-4363806.okta.com`;
 
 const prodConfig = {
   url: oktapreview,
@@ -13,7 +13,7 @@ const devConfig = {
   url: oktapreview,
   issuer: `${oktapreview}/oauth2/default`,
   redirect_uri: `${window.location.origin}/implicit/callback`,
-  client_id: `0oa4ls58zN5pBW1hp1d6`,
+  client_id: `0oabxvg8WJ7IYaIzX5d5`,
   scopes: ['openid', 'profile', 'email'],
   pkce: true
 }

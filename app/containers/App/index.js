@@ -65,23 +65,20 @@ function App() {
       <div>
         <Switch>
           <Route
-            restricted
             exact
             path={routes.home.path}
             component={HomePage}
           />
-          <PublicRoute
-            restricted
+          <Route
             path={routes.login.path}
             component={LoginPage}
           />
-          <PublicRoute
-            restricted
+          <Route
             path={routes.register.path}
             component={RegisterPage}
           />
-          <PublicRoute path={routes.privacy.path} component={PrivacyPage} />
-          <PublicRoute
+          <Route path={routes.privacy.path} component={PrivacyPage} />
+          <Route
             exact
             path={routes.notFound.path}
             component={NotFoundPage}
@@ -90,9 +87,8 @@ function App() {
           <Layout>
             <Switch>
               <SecureRoute
-                exact
                 path={routes.dashboard.path}
-                component={DashboardPage}
+                component={DashboardPage} 
               />
               <SecureRoute
                 path={routes.payment.path}
@@ -106,7 +102,7 @@ function App() {
                 path={routes.settings.path}
                 component={SettingsPage}
               />
-              <Route path="/implicit/callback" exact><LoginCallback/></Route>
+              <Route path="/implicit/callback" exact={true} component={LoginCallback}/>
 
               <Redirect to={routes.notFound.path} />
             </Switch>
