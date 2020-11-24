@@ -53,7 +53,7 @@ export function* logout() {
 
   try {
     // yield call(request, requestURL, requestParameters);
-    // yield put(logoutSuccessAction());
+    yield put(logoutSuccessAction());
     // yield put(push(routes.home.path));
   } catch (error) {
     yield put(logoutErrorAction(error));

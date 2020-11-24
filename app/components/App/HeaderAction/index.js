@@ -41,7 +41,7 @@ function HeaderAction({ intl }) {
 
   const onLogout = () => {
     dispatch(logoutAction());
-    oktaAuth.signOut();
+    oktaAuth.signOut({ postLogoutRedirectUri: window.location.origin + '/login' });
   }
   const onGetMessages = () => dispatch(getMessagesAction());
   const onGetNotifications = () => dispatch(getNotificationsAction());
