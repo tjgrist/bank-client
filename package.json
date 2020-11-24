@@ -58,6 +58,9 @@
   "dependencies": {
     "@ant-design/icons": "4.2.1",
     "@hot-loader/react-dom": "16.13.0",
+    "@okta/okta-auth-js": "4.2.0",
+    "@okta/okta-react": "4.0.0",
+    "@okta/okta-signin-widget": "5.0.2",
     "antd": "4.5.0",
     "chalk": "4.1.0",
     "compression": "1.7.4",
@@ -89,6 +92,7 @@
     "react-intl": "2.9.0",
     "react-redux": "7.2.1",
     "react-responsive": "8.1.0",
+    "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-trend": "1.2.5",
     "recharts": "v2.0.0-beta.1",

@@ -4,7 +4,7 @@
  *
  */
 
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './constants';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, MERGE_USER_DATA } from './constants';
 
 export function loginAction() {
   return {
@@ -25,4 +25,11 @@ export function loginErrorAction(error) {
     type: LOGIN_ERROR,
     error,
   };
+}
+
+export function mergeUserData(user) {
+  return {
+    type: MERGE_USER_DATA,
+    user
+  }
 }

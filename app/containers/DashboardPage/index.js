@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useDispatch, useSelector } from 'react-redux';
 import { Responsive, WidthProvider } from 'react-grid-layout';
@@ -31,6 +31,8 @@ import reducer from './reducer';
 import { changeLayoutAction } from './actions';
 import { makeSelectIsOpenedModal } from './selectors';
 import messages from './messages';
+import { useOktaAuth } from '@okta/okta-react';
+import { setUserDataSuccessAction } from 'containers/SettingsPage/actions';
 
 const key = 'dashboardPage';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
@@ -49,6 +51,20 @@ export default function DashboardPage() {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
+  const { authState, oktaAuth } = useOktaAuth();
+
+  useEffect(() => {
+    if (authState.isAuthenticated && !authState.isPending) {
+      oktaAuth.getUser().then(userData => {
+        dispatch(setUserDataSuccessAction(userData))
+      });
+    }
+    else {
+      dispatch(setUserDataSuccessAction(null))
+    }
+    }, [authState])
+
+    console.log(user)
   return (
     <>
       <FormattedMessage {...messages.dashboard}>

@@ -38,6 +38,7 @@ import { createStructuredSelector } from 'reselect';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import saga from './saga';
+import { LoginCallback, SecureRoute } from '@okta/okta-react';
 
 const stateSelector = createStructuredSelector({
   locale: makeSelectLocale(),
@@ -64,23 +65,20 @@ function App() {
       <div>
         <Switch>
           <Route
-            restricted
             exact
             path={routes.home.path}
             component={HomePage}
           />
-          <PublicRoute
-            restricted
+          <Route
             path={routes.login.path}
             component={LoginPage}
           />
-          <PublicRoute
-            restricted
+          <Route
             path={routes.register.path}
             component={RegisterPage}
           />
-          <PublicRoute path={routes.privacy.path} component={PrivacyPage} />
-          <PublicRoute
+          <Route path={routes.privacy.path} component={PrivacyPage} />
+          <Route
             exact
             path={routes.notFound.path}
             component={NotFoundPage}
@@ -88,23 +86,23 @@ function App() {
 
           <Layout>
             <Switch>
-              <PrivateRoute
-                exact
+              <SecureRoute
                 path={routes.dashboard.path}
-                component={DashboardPage}
+                component={DashboardPage} 
               />
-              <PrivateRoute
+              <SecureRoute
                 path={routes.payment.path}
                 component={PaymentPage}
               />
-              <PrivateRoute
+              <SecureRoute
                 path={routes.history.path}
                 component={HistoryPage}
               />
-              <PrivateRoute
+              <SecureRoute
                 path={routes.settings.path}
                 component={SettingsPage}
               />
+              <Route path="/implicit/callback" exact={true} component={LoginCallback}/>
 
               <Redirect to={routes.notFound.path} />
             </Switch>
@@ -112,7 +110,7 @@ function App() {
         </Switch>
         <GlobalStyle />
       </div>
-    </ConfigProvider>
+     </ConfigProvider>
   );
 }
 

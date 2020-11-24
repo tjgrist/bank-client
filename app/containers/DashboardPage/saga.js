@@ -31,18 +31,18 @@ import { makeSelectCurrency } from './selectors';
 
 export function* getAvailableFunds() {
   try {
-    const [{ amountMoney, currencyName }, accountBalanceHistory] = yield all([
-      call(getAmountMoney),
-      call(getAccountBalanceHistory),
-    ]);
+    // const [{ amountMoney, currencyName }, accountBalanceHistory] = yield all([
+    //   call(getAmountMoney),
+    //   call(getAccountBalanceHistory),
+    // ]);
 
-    yield put(
-      getAvailableFundsSuccessAction(
-        amountMoney,
-        currencyName,
-        accountBalanceHistory,
-      ),
-    );
+    // yield put(
+    //   getAvailableFundsSuccessAction(
+    //     amountMoney,
+    //     currencyName,
+    //     accountBalanceHistory,
+    //   ),
+    // );
   } catch (error) {
     yield put(getAvailableFundsErrorAction(error));
     yield put(push(routes.login.path));
@@ -58,13 +58,13 @@ function* getAmountMoney() {
   };
 
   try {
-    const { amountMoney, currencyName } = yield call(
-      request,
-      requestURL,
-      requestParameters,
-    );
+    // const { amountMoney, currencyName } = yield call(
+    //   request,
+    //   requestURL,
+    //   requestParameters,
+    // );
 
-    return yield { amountMoney, currencyName };
+    // return yield { amountMoney, currencyName };
   } catch (error) {
     throw new Error(error);
   }
@@ -79,13 +79,13 @@ function* getAccountBalanceHistory() {
   };
 
   try {
-    const { accountBalanceHistory } = yield call(
-      request,
-      requestURL,
-      requestParameters,
-    );
+    // const { accountBalanceHistory } = yield call(
+    //   request,
+    //   requestURL,
+    //   requestParameters,
+    // );
 
-    return yield accountBalanceHistory;
+    // return yield accountBalanceHistory;
   } catch (error) {
     throw new Error(error);
   }
@@ -100,53 +100,53 @@ export function* getAccountBalance() {
   };
 
   try {
-    const { revenues, expenses, currencyName } = yield call(
-      request,
-      requestURL,
-      requestParameters,
-    );
+    // const { revenues, expenses, currencyName } = yield call(
+    //   request,
+    //   requestURL,
+    //   requestParameters,
+    // );
 
-    const revenuesPercent =
-      ((Number(revenues) - Number(expenses)) / Number(revenues)) * 100;
-    let savingsPercent;
-    let savingsData;
-    let savingsColors;
+    // const revenuesPercent =
+    //   ((Number(revenues) - Number(expenses)) / Number(revenues)) * 100;
+    // let savingsPercent;
+    // let savingsData;
+    // let savingsColors;
 
-    if (Number(revenues) === Infinity) {
-      savingsPercent = 100;
-      savingsColors = [colors.primaryBlue, colors.red];
-      savingsData = [
-        { name: 'revenues', value: parseFloat(revenues) },
-        { name: 'expenses', value: parseFloat(expenses) },
-      ];
-    } else if (Number(expenses) === Infinity) {
-      savingsPercent = 0;
-      savingsColors = [colors.primaryBlue, colors.red];
-      savingsData = [
-        { name: 'revenues', value: parseFloat(revenues) },
-        { name: 'expenses', value: parseFloat(expenses) },
-      ];
-    } else if (!Number(revenues) && !Number(expenses)) {
-      savingsPercent = 0;
-      savingsColors = ['#b8b8b8'];
-      savingsData = [{ name: 'savings', value: 100 }];
-    } else {
-      savingsPercent = Math.max(0, revenuesPercent);
-      savingsColors = [colors.primaryBlue, colors.red];
-      savingsData = [
-        { name: 'revenues', value: parseFloat(revenues) },
-        { name: 'expenses', value: parseFloat(expenses) },
-      ];
-    }
+    // if (Number(revenues) === Infinity) {
+    //   savingsPercent = 100;
+    //   savingsColors = [colors.primaryBlue, colors.red];
+    //   savingsData = [
+    //     { name: 'revenues', value: parseFloat(revenues) },
+    //     { name: 'expenses', value: parseFloat(expenses) },
+    //   ];
+    // } else if (Number(expenses) === Infinity) {
+    //   savingsPercent = 0;
+    //   savingsColors = [colors.primaryBlue, colors.red];
+    //   savingsData = [
+    //     { name: 'revenues', value: parseFloat(revenues) },
+    //     { name: 'expenses', value: parseFloat(expenses) },
+    //   ];
+    // } else if (!Number(revenues) && !Number(expenses)) {
+    //   savingsPercent = 0;
+    //   savingsColors = ['#b8b8b8'];
+    //   savingsData = [{ name: 'savings', value: 100 }];
+    // } else {
+    //   savingsPercent = Math.max(0, revenuesPercent);
+    //   savingsColors = [colors.primaryBlue, colors.red];
+    //   savingsData = [
+    //     { name: 'revenues', value: parseFloat(revenues) },
+    //     { name: 'expenses', value: parseFloat(expenses) },
+    //   ];
+    // }
 
-    yield put(
-      getAccountBalanceSuccessAction(
-        currencyName,
-        savingsPercent,
-        savingsData,
-        savingsColors,
-      ),
-    );
+    // yield put(
+    //   getAccountBalanceSuccessAction(
+    //     currencyName,
+    //     savingsPercent,
+    //     savingsData,
+    //     savingsColors,
+    //   ),
+    // );
   } catch (error) {
     yield put(getAccountBalanceErrorAction(error));
     yield put(push(routes.login.path));
@@ -162,8 +162,8 @@ export function* getBills() {
   };
 
   try {
-    const { data } = yield call(request, requestURL, requestParameters);
-    yield put(getBillsSuccessAction(data));
+    // const { data } = yield call(request, requestURL, requestParameters);
+    // yield put(getBillsSuccessAction(data));
   } catch (error) {
     yield put(getBillsErrorAction(error));
     yield put(push(routes.login.path));
@@ -179,8 +179,8 @@ export function* getRecentTransactions() {
   };
 
   try {
-    const { data } = yield call(request, requestURL, requestParameters);
-    yield put(getRecentTransactionsSuccessAction(data));
+    // const { data } = yield call(request, requestURL, requestParameters);
+    // yield put(getRecentTransactionsSuccessAction(data));
   } catch (error) {
     yield put(getRecentTransactionsErrorAction(error));
     yield put(push(routes.login.path));
@@ -207,17 +207,17 @@ export function* createNewBill({ snippets }) {
   const placement = 'bottomLeft';
 
   try {
-    const bill = yield call(request, requestURL, requestParameters);
-    delete bill.user;
+    // const bill = yield call(request, requestURL, requestParameters);
+    // delete bill.user;
 
-    yield put(createNewBillSuccessAction(bill));
+    // yield put(createNewBillSuccessAction(bill));
 
-    notification.success({
-      message: snippets.success.title,
-      description: snippets.success.description,
-      style,
-      placement,
-    });
+    // notification.success({
+    //   message: snippets.success.title,
+    //   description: snippets.success.description,
+    //   style,
+    //   placement,
+    // });
   } catch (error) {
     switch (error.statusCode) {
       case 400:

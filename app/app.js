@@ -15,6 +15,9 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import history from 'utils/history';
 import omit from 'lodash/omit';
+import { Security } from '@okta/okta-react';
+import { OktaAuth } from '@okta/okta-auth-js';
+import config from './app.config';
 
 // Import root app
 import App from 'containers/App';
@@ -42,6 +45,8 @@ const initialState = loadState();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+const oktaAuth = new OktaAuth(config.oidc);
+
 // Load and Save redux store to localStorage
 store.subscribe(
   throttle(() => {
@@ -58,12 +63,20 @@ store.subscribe(
   }, 1000),
 );
 
+const customAuthHandler = (oktaAuth) => {
+  history.push('/login')
+}
+
 const ConnectedApp = ({ messages }) => (
   <Provider store={store}>
     <LanguageProvider messages={messages}>
       <ConnectedRouter history={history}>
         <HelmetProvider>
+        <Security oktaAuth={oktaAuth}
+                onAuthRequired={customAuthHandler}
+                >
           <App />
+          </Security>
         </HelmetProvider>
       </ConnectedRouter>
     </LanguageProvider>

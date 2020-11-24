@@ -31,7 +31,7 @@ export default function Greeting() {
         )}
         ,{' '}
         <StyledNameWrapper>
-          {user?.firstName} {user?.lastName}
+          {user?.name}
         </StyledNameWrapper>
       </div>
 
