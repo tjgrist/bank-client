@@ -20,14 +20,9 @@ const Login = () => {
   const { oktaAuth } = useOktaAuth();
 
   useEffect(() => {
-    const { issuer, clientId, redirectUri, scopes } = config.oidc;
+    const { issuer, clientId, redirectUri, scopes, url } = config.oidc;
     const widget = new OktaSignIn({
-      /**
-       * Note: when using the Sign-In Widget for an OIDC flow, it still
-       * needs to be configured with the base URL for your Okta Org. Here
-       * we derive it from the given issuer for convenience.
-       */
-      baseUrl: issuer.split('/oauth2')[0],
+      baseUrl: url,
       clientId,
       redirectUri,
       logo: '/react.svg',
