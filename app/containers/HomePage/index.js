@@ -8,16 +8,10 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectIsLogged } from 'containers/App/selectors';
 import { push } from 'connected-react-router';
 import { routes } from 'utils';
 
-const stateSelector = createStructuredSelector({
-  isLogged: makeSelectIsLogged(),
-});
-
 export default function HomePage() {
-  const { isLogged } = useSelector(stateSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {

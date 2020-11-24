@@ -52,8 +52,8 @@ export function* getBills() {
   };
 
   try {
-    const { data } = yield call(request, requestURL, requestParameters);
-    yield put(getBillsSuccessAction(data));
+    // const { data } = yield call(request, requestURL, requestParameters);
+    // yield put(getBillsSuccessAction(data));
   } catch (error) {
     yield put(getBillsErrorAction(error));
 
@@ -85,8 +85,8 @@ export function* searchRecipient({ value }) {
   }
 
   try {
-    const { data } = yield call(request, requestURL, requestParameters);
-    yield put(searchRecipientSuccessAction(data));
+    // const { data } = yield call(request, requestURL, requestParameters);
+    // yield put(searchRecipientSuccessAction(data));
   } catch (error) {
     yield put(searchRecipientErrorAction(error));
 
@@ -106,15 +106,15 @@ export function* checkRecipient() {
   const recipientBill = yield select(makeSelectRecipientBill());
   const isExist = recipients.find(({ uuid }) => uuid === recipientBill.uuid);
 
-  if (isExist) {
-    yield put(checkRecipientCorrectAction());
-  } else {
-    yield put(
-      checkRecipientIncorrectAction(
-        <FormattedMessage {...messages.billNotValid} />,
-      ),
-    );
-  }
+  // if (isExist) {
+  //   yield put(checkRecipientCorrectAction());
+  // } else {
+  //   yield put(
+  //     checkRecipientIncorrectAction(
+  //       <FormattedMessage {...messages.billNotValid} />,
+  //     ),
+  //   );
+  // }
 }
 
 export function* createTransaction() {

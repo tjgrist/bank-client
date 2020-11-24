@@ -52,9 +52,9 @@ export function* logout() {
   };
 
   try {
-    yield call(request, requestURL, requestParameters);
-    yield put(logoutSuccessAction());
-    yield put(push(routes.home.path));
+    // yield call(request, requestURL, requestParameters);
+    // yield put(logoutSuccessAction());
+    // yield put(push(routes.home.path));
   } catch (error) {
     yield put(logoutErrorAction(error));
 
@@ -118,8 +118,8 @@ export function* getMessages() {
   };
 
   try {
-    const response = yield call(request, requestURL, requestParameters);
-    yield put(getMessagesSuccessAction(response));
+    // const response = yield call(request, requestURL, requestParameters);
+    // yield put(getMessagesSuccessAction(response));
   } catch (error) {
     yield put(getMessagesErrorAction(error));
     yield put(push(routes.login.path));
@@ -139,8 +139,8 @@ export function* readAllMessages() {
   };
 
   try {
-    yield call(request, requestURL, requestParameters);
-    yield put(readAllMessagesSuccessAction());
+    // yield call(request, requestURL, requestParameters);
+    // yield put(readAllMessagesSuccessAction());
   } catch (error) {
     yield put(readAllMessagesErrorAction(error));
     yield put(push(routes.login.path));
@@ -171,9 +171,9 @@ export function* readMessage() {
   };
 
   try {
-    yield put(readMessageAction());
-    yield call(request, requestURL, requestParameters);
-    yield put(readMessageSuccessAction());
+    // yield put(readMessageAction());
+    // yield call(request, requestURL, requestParameters);
+    // yield put(readMessageSuccessAction());
   } catch (error) {
     yield put(readMessageErrorAction(error));
     yield put(push(routes.login.path));
@@ -191,8 +191,8 @@ export function* getNotifications() {
   };
 
   try {
-    const response = yield call(request, requestURL, requestParameters);
-    yield put(getNotificationsSuccessAction(response));
+    // const response = yield call(request, requestURL, requestParameters);
+    // yield put(getNotificationsSuccessAction(response));
   } catch (error) {
     yield put(getNotificationsErrorAction(error));
     yield put(push(routes.login.path));

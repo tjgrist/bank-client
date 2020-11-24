@@ -28,7 +28,6 @@ import {
 export const initialState = {
   isCollapsedSidebar: false,
   isCollapsedDrawer: false,
-  isLogged: false,
   token: {},
   user: {},
   currencies: [],
@@ -48,7 +47,6 @@ const appReducer = produce((draft, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
     case LOGIN_EXPRESS_SUCCESS:
-      draft.isLogged = true;
       draft.token = action.token;
       draft.user = action.user;
       break;

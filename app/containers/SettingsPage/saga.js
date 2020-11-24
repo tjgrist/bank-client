@@ -25,8 +25,8 @@ export function* getUserData() {
   };
 
   try {
-    const userData = yield call(request, requestURL, requestParameters);
-    yield put(getUserDataSuccessAction(userData));
+    // const userData = yield call(request, requestURL, requestParameters);
+    // yield put(getUserDataSuccessAction(userData));
   } catch (error) {
     yield put(getUserDataErrorAction(error));
     yield put(push(routes.login.path));
@@ -52,15 +52,15 @@ export function* setUserData({ snippets }) {
   const placement = 'bottomLeft';
 
   try {
-    const userData = yield call(request, requestURL, requestParameters);
-    yield put(setUserDataSuccessAction(userData));
+    // const userData = yield call(request, requestURL, requestParameters);
+    // yield put(setUserDataSuccessAction(userData));
 
-    notification.success({
-      message: snippets.success.title,
-      description: snippets.success.description,
-      style,
-      placement,
-    });
+    // notification.success({
+    //   message: snippets.success.title,
+    //   description: snippets.success.description,
+    //   style,
+    //   placement,
+    // });
   } catch (error) {
     yield put(setUserDataIncorrectAction(error));
   }
