@@ -59,7 +59,7 @@ export default function DashboardPage() {
         dispatch(setUserDataSuccessAction(userData))
       });
     }
-    }, [])
+    }, [authState])
 
   return (
     <>

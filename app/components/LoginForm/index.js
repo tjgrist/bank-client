@@ -1,77 +1,72 @@
-/**
+/*
+ * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
  *
- * LoginForm
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
+ * See the License for the specific language governing permissions and limitations under the License.
  */
-
-import React from 'react';
-import { StyledForm, StyledFormWrapper } from 'components/Form/styles';
-import { createStructuredSelector } from 'reselect';
-import { useSelector, useDispatch } from 'react-redux';
-import { makeSelectCurrentStep } from 'containers/LoginPage/selectors';
-import LoginAction from 'components/LoginAction';
-import { PinCode, Password } from 'components/LoginContent';
-import { nextStepAction } from 'containers/App/actions';
-import { loginAction, loginSuccessAction } from 'containers/LoginPage/actions';
+import React, { useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import { StyledButton, StyledFormActionsWrapper } from 'components/Form/styles';
+import * as OktaSignIn from '@okta/okta-signin-widget';
+import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
-const stateSelector = createStructuredSelector({
-  currentStep: makeSelectCurrentStep(),
-});
+import config from '../../app.config';
 
-export default function LoginForm() {
-  const { currentStep } = useSelector(stateSelector);
-  const [form] = StyledForm.useForm();
-  const dispatch = useDispatch();
-  const { authService, authState } = useOktaAuth();
+const Login = () => {
+  const { authService } = useOktaAuth();
 
-  const onNextStep = () => dispatch(nextStepAction());
-  const onLogin = () => dispatch(loginAction());
-  const onLoginWithOkta = (auth) => dispatch(loginSuccessAction(auth.user, auth.token));
+  useEffect(() => {
+    const { issuer, clientId, redirectUri, scopes } = config;
+    console.log(issuer, clientId, redirectUri, scopes)
+    const widget = new OktaSignIn({
+      /**
+       * Note: when using the Sign-In Widget for an OIDC flow, it still
+       * needs to be configured with the base URL for your Okta Org. Here
+       * we derive it from the given issuer for convenience.
+       */
+      baseUrl: issuer.split('/oauth2')[0],
+      clientId,
+      redirectUri,
+      logo: '/react.svg',
+      i18n: {
+        en: {
+          'primaryauth.title': 'Sign in to Cloudnalu using Okta',
+        },
+      },
+      authParams: {
+        // To avoid redirect do not set "pkce" or "display" here. OKTA-335945
+        issuer,
+        scopes,
+      },
+    });
 
-  const onValidateFields = async () => {
-    try {
-      await form.validateFields();
+    widget.renderEl(
+      { el: '#sign-in-widget' },
+      ({ tokens }) => {
+        // Add tokens to storage
+        const tokenManager = authService.getTokenManager();
+        tokenManager.add('idToken', tokens.idToken);
+        tokenManager.add('accessToken', tokens.accessToken);
 
-      if (currentStep === steps.length - 1) {
-        onLogin();
-      } else {
-        onNextStep();
-      }
-    } catch (error) {
-      Error(error);
-    }
-  };
-
-  const loginWithOkta = () => {
-    authService.login('/dashboard');
-    const auth = {"user":{"uuid":"d11cb4f7-3ac9-42ed-83ed-c56b7e473ed9","firstName":"Thomas","lastName":"Grist","email":"tjgrst@gmail.com","avatar":null,"userAuth":{"uuid":"74a76ecf-4a72-4cb4-87b7-148407718efb","pinCode":226911,"lastSuccessfulLoggedDate":"2020-11-13T05:55:12.462Z","lastFailedLoggedDate":null,"lastLogoutDate":"2020-11-13T05:59:21.347Z"},"userConfig":{"uuid":"bad0499a-56a9-4243-b567-e04890aee563","notificationCount":2,"messageCount":1,"currency":{"uuid":"f57d8898-0d16-47fc-85c6-556db0424dc0","name":"USD","currentExchangeRate":0.2626876977}}},"token":{"expiresIn":"3600","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZDExY2I0ZjctM2FjOS00MmVkLTgzZWQtYzU2YjdlNDczZWQ5Iiwicm9sZSI6IlVTRVJfUk9MRSIsImlhdCI6MTYwNTI0Nzg5MX0.gmVVgvRLeiQ8f0qgxc1ZQhyq9qbtlFQf8afz9SquelI"}}    
-    onLoginWithOkta(auth);
-  }
-
-  const steps = [
-    { content: <PinCode onValidateFields={onValidateFields} /> },
-    { content: <Password onValidateFields={onValidateFields} /> },
-  ];
+        // Return to the original URL (if auth was initiated from a secure route), falls back to the origin
+        const fromUri = authService.getFromUri();
+        console.log(fromUri)
+        window.location.assign(fromUri);
+      },
+      (err) => {
+        throw err;
+      },
+    );
+  }, [authService]);
 
   return (
-    <StyledFormWrapper>
-      <StyledForm centered="true" form={form} layout="vertical" name="login">
-        {steps[currentStep].content}
-      </StyledForm>
-
-      <LoginAction steps={steps} onValidateFields={onValidateFields} />
-
-      <StyledFormActionsWrapper>
-        <StyledButton
-          type="default"
-          onClick={loginWithOkta}
-        >
-          Login with Okta
-        </StyledButton>
-      </StyledFormActionsWrapper>
-      
-    </StyledFormWrapper>
+    <div>
+      <div id="sign-in-widget" />
+    </div>
   );
-}
+};
+export default Login;

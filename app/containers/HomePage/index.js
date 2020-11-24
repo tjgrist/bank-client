@@ -21,12 +21,8 @@ export default function HomePage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isLogged) {
       dispatch(push(routes.dashboard.path));
-    } else {
-      dispatch(push(routes.login.path));
-    }
-  }, [isLogged]);
+  }, []);
 
   return null;
 }

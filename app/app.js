@@ -60,12 +60,18 @@ store.subscribe(
   }, 1000),
 );
 
+const customAuthHandler = (oktaAuth) => {
+  history.push('/login')
+}
+
 const ConnectedApp = ({ messages }) => (
   <Provider store={store}>
     <LanguageProvider messages={messages}>
       <ConnectedRouter history={history}>
         <HelmetProvider>
-        <Security {...config}>
+        <Security {...config}
+                onAuthRequired={customAuthHandler}
+                >
           <App />
           </Security>
         </HelmetProvider>
