@@ -27,6 +27,7 @@ import Messages from '../Messages';
 import Notifications from '../Notifications';
 import Modal from './Modal';
 import { useOktaAuth } from '@okta/okta-react';
+import config from '../../../app.config'
 
 const stateSelector = createStructuredSelector({
   user: makeSelectUser(),
@@ -41,7 +42,7 @@ function HeaderAction({ intl }) {
 
   const onLogout = () => {
     dispatch(logoutAction());
-    oktaAuth.signOut({ postLogoutRedirectUri: window.location.origin + '/login' });
+    oktaAuth.signOut({ postLogoutRedirectUri: config.postLogoutRedirectUri });
   }
   const onGetMessages = () => dispatch(getMessagesAction());
   const onGetNotifications = () => dispatch(getNotificationsAction());

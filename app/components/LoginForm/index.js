@@ -20,7 +20,7 @@ const Login = () => {
   const { oktaAuth } = useOktaAuth();
 
   useEffect(() => {
-    const { issuer, clientId, redirectUri, scopes } = config;
+    const { issuer, clientId, redirectUri, scopes } = config.oidc;
     const widget = new OktaSignIn({
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
@@ -40,8 +40,6 @@ const Login = () => {
         // To avoid redirect do not set "pkce" or "display" here. OKTA-335945
         issuer,
         scopes,
-        pkce: true
-
       },
     });
 

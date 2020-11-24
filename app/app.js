@@ -45,7 +45,7 @@ const initialState = loadState();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
-const oktaAuth = new OktaAuth(config);
+const oktaAuth = new OktaAuth(config.oidc);
 
 // Load and Save redux store to localStorage
 store.subscribe(
