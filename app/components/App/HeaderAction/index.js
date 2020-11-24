@@ -41,7 +41,7 @@ function HeaderAction({ intl }) {
 
   const onLogout = () => {
     dispatch(logoutAction());
-    authService.logout();
+    authService.logout('/');
   }
   const onGetMessages = () => dispatch(getMessagesAction());
   const onGetNotifications = () => dispatch(getNotificationsAction());

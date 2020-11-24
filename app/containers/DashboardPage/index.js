@@ -59,8 +59,12 @@ export default function DashboardPage() {
         dispatch(setUserDataSuccessAction(userData))
       });
     }
+    else {
+      dispatch(setUserDataSuccessAction(null))
+    }
     }, [authState])
 
+    console.log(user)
   return (
     <>
       <FormattedMessage {...messages.dashboard}>

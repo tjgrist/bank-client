@@ -21,7 +21,6 @@ const Login = () => {
 
   useEffect(() => {
     const { issuer, clientId, redirectUri, scopes } = config;
-    console.log(issuer, clientId, redirectUri, scopes)
     const widget = new OktaSignIn({
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
@@ -41,6 +40,8 @@ const Login = () => {
         // To avoid redirect do not set "pkce" or "display" here. OKTA-335945
         issuer,
         scopes,
+        pkce: true
+
       },
     });
 
@@ -54,7 +55,6 @@ const Login = () => {
 
         // Return to the original URL (if auth was initiated from a secure route), falls back to the origin
         const fromUri = authService.getFromUri();
-        console.log(fromUri)
         window.location.assign(fromUri);
       },
       (err) => {
