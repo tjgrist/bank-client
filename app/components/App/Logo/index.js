@@ -10,8 +10,9 @@ import { StyledLogo } from './styles';
 
 export default function Logo() {
   return (
-    <StyledLogo>
-      <img width="150" height="auto" src={logo} alt="Bank Application" />
+    <StyledLogo
+      style={{padding: '5px'}}>
+      <img width="50px" height="50px" src={logo} alt="Cloud Nalu" />
     </StyledLogo>
   );
 }
