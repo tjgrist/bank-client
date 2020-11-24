@@ -65,7 +65,7 @@ const ConnectedApp = ({ messages }) => (
     <LanguageProvider messages={messages}>
       <ConnectedRouter history={history}>
         <HelmetProvider>
-          <Security {...config}>
+        <Security {...config}>
           <App />
           </Security>
         </HelmetProvider>

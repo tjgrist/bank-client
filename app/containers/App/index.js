@@ -110,7 +110,7 @@ function App() {
         </Switch>
         <GlobalStyle />
       </div>
-    </ConfigProvider>
+     </ConfigProvider>
   );
 }
 
