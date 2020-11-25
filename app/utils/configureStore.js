@@ -28,7 +28,7 @@ export default function configureStore(initialState = {}, history) {
     //   };
     /* eslint-enable */
 
-    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({});
+    //composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({});
   }
 
   const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
