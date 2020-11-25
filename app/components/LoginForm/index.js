@@ -13,6 +13,7 @@ import React, { useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+import logo from 'images/logo-50x50.png'
 
 import config from '../../app.config';
 
@@ -25,7 +26,7 @@ const Login = () => {
       baseUrl: url,
       clientId,
       redirectUri,
-      logo: '/react.svg',
+      logo,
       i18n: {
         en: {
           'primaryauth.title': 'Sign in to Cloudnalu using Okta',
